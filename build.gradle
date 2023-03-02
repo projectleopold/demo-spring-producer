@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'io.spring.dependency-management' version "${springDepManPluginVersion}"
+    id 'org.springframework.cloud.contract' version "${springCloudContractPluginVersion}"
 }
 
 group = 'io.github.projectleopold.demo'
@@ -23,6 +24,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
 }
 
 dependencyManagement {
@@ -31,6 +33,13 @@ dependencyManagement {
     }
 }
 
+tasks.named('contractTest') {
+    useJUnitPlatform()
+}
+
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+contracts {
 }
