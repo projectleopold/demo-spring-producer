@@ -42,4 +42,5 @@ tasks.named('test') {
 }
 
 contracts {
+    failOnNoContracts = false
 }
