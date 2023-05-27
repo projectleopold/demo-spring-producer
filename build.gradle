@@ -33,14 +33,11 @@ dependencyManagement {
     }
 }
 
-tasks.named('contractTest') {
-    useJUnitPlatform()
-}
-
-tasks.named('test') {
+test {
     useJUnitPlatform()
 }
 
 contracts {
+    testFramework = 'JUNIT5'
     failOnNoContracts = false
 }
