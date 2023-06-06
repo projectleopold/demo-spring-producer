@@ -39,5 +39,6 @@ test {
 
 contracts {
     testFramework = 'JUNIT5'
-    failOnNoContracts = false
+    basePackageForTests = 'io.github.projectleopold.demo.springproducer'
+    baseClassForTests = 'io.github.projectleopold.demo.springproducer.BaseRestContractTest'
 }
