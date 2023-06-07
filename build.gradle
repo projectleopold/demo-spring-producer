@@ -46,7 +46,7 @@ contracts {
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        stubs(MavenPublication) {
             artifact verifierStubsJar
         }
     }
