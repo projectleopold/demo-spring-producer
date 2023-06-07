@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'io.spring.dependency-management' version "${springDepManPluginVersion}"
     id 'org.springframework.cloud.contract' version "${springCloudContractPluginVersion}"
+    id 'maven-publish'
 }
 
 group = 'io.github.projectleopold.demo'
@@ -41,4 +42,22 @@ contracts {
     testFramework = 'JUNIT5'
     basePackageForTests = 'io.github.projectleopold.demo.springproducer'
     baseClassForTests = 'io.github.projectleopold.demo.springproducer.BaseRestContractTest'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact verifierStubsJar
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/projectleopold/demo-spring-producer")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
