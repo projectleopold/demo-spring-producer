@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.projectleopold.demo'
-version = '0.1.0-SNAPSHOT'
+version = '0.1.0'
 sourceCompatibility = '17'
 
 configurations {
@@ -55,8 +55,8 @@ publishing {
             name = 'GitHubPackages'
             url = 'https://maven.pkg.github.com/projectleopold/demo-spring-producer'
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = project.findProperty('github.username') ?: System.getenv('GITHUB_ACTOR')
+                password = project.findProperty('github.token') ?: System.getenv('GITHUB_TOKEN')
             }
         }
     }
