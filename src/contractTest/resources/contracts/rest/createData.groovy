@@ -10,8 +10,14 @@ Contract.make {
             contentType applicationJson()
         }
         body(
-                id: $('new-data-id'),
-                value: $('new-data-value')
+                id: $(
+                        producer('new-data-id'),
+                        consumer(nonEmpty())
+                ),
+                value: $(
+                        producer('new-data-value'),
+                        consumer(nonEmpty())
+                )
         )
     }
     response {
@@ -20,8 +26,8 @@ Contract.make {
             contentType applicationJson()
         }
         body(
-                id: $('new-data-id'),
-                value: $('new-data-value')
+                id: fromRequest().body('$.id'),
+                value: fromRequest().body('$.value')
         )
     }
 }

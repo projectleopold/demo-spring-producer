@@ -5,7 +5,10 @@ import org.springframework.cloud.contract.spec.Contract
 Contract.make {
     request {
         method GET()
-        url '/api/datum/single-data-id'
+        url $(
+                producer('/api/datum/single-data-id'),
+                consumer(regex('/api/datum/[a-zA-Z0-9-_]+'))
+        )
     }
     response {
         status OK()
@@ -13,7 +16,7 @@ Contract.make {
             contentType applicationJson()
         }
         body(
-                id: $('single-data-id'),
+                id: fromRequest().path(2),
                 value: $('single-data-value')
         )
     }
