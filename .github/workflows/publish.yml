@@ -2,7 +2,7 @@ name: Publish workflow
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 permissions:
   contents: read
@@ -28,3 +28,4 @@ jobs:
           arguments: publishStubsPublicationToGitHubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_MAVEN_URL: https://maven.pkg.github.com

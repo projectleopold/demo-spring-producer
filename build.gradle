@@ -53,7 +53,8 @@ publishing {
     repositories {
         maven {
             name = 'GitHubPackages'
-            url = 'https://maven.pkg.github.com/projectleopold/demo-spring-producer'
+            def mavenUrl = project.findProject('github.pkg.maven.url') ?: System.getenv('GITHUB_MAVEN_URL')
+            url = "${mavenUrl}/projectleopold/demo-spring-producer"
             credentials {
                 username = project.findProperty('github.username') ?: System.getenv('GITHUB_ACTOR')
                 password = project.findProperty('github.token') ?: System.getenv('GITHUB_TOKEN')
