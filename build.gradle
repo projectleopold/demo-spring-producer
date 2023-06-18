@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'io.github.projectleopold.demo'
-version = '0.1.0-RC0'
+version = '0.1.0-RC1'
 sourceCompatibility = '17'
 
 configurations {
@@ -40,8 +40,11 @@ test {
 
 contracts {
     testFramework = 'JUNIT5'
-    basePackageForTests = 'io.github.projectleopold.demo.springproducer'
-    baseClassForTests = 'io.github.projectleopold.demo.springproducer.BaseRestContractTest'
+    def pkg = 'io.github.projectleopold.demo.springproducer'
+    basePackageForTests = pkg
+    baseClassMappings {
+        baseClassMapping('spring-consumer.rest', "${pkg}.springconsumer.SpringConsumerRestContractTest")
+    }
 }
 
 publishing {

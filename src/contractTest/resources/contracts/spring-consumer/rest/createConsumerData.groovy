@@ -1,5 +1,3 @@
-package contracts.rest
-
 import org.springframework.cloud.contract.spec.Contract
 
 Contract.make {
@@ -10,14 +8,8 @@ Contract.make {
             contentType applicationJson()
         }
         body(
-                id: $(
-                        producer('new-data-id'),
-                        consumer(nonEmpty())
-                ),
-                value: $(
-                        producer('new-data-value'),
-                        consumer(nonEmpty())
-                )
+                id: $(regex('id-.+')),
+                value: $(regex('value-.+'))
         )
     }
     response {
