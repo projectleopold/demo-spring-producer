@@ -9,7 +9,7 @@ Contract.make {
         }
         body(
                 id: $(regex('id-.+')),
-                value: $(regex('value-.+'))
+                data: $(regex('value-.+'))
         )
     }
     response {
@@ -19,7 +19,7 @@ Contract.make {
         }
         body(
                 id: fromRequest().body('$.id'),
-                value: fromRequest().body('$.value')
+                data: fromRequest().body('$.data')
         )
     }
 }
