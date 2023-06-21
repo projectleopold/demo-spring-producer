@@ -32,12 +32,12 @@ public abstract class SpringConsumerRestContractTest {
     public void mockDataService() {
         when(dataService.insert(argThat(
                 request -> request.getId().matches("id-.+")
-                        && request.getValue().matches("value-.+"))))
+                        && request.getData().matches("value-.+"))))
                 .then(invocation -> {
                     DataRequest request = invocation.getArgument(0, DataRequest.class);
                     return DataResponse.builder()
                             .id(request.getId())
-                            .value(request.getValue())
+                            .data(request.getData())
                             .build();
                 });
     }

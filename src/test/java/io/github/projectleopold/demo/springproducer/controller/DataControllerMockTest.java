@@ -47,10 +47,10 @@ class DataControllerMockTest {
         String dataValue = "test-value";
         when(dataService.insert(eq(DataRequest.builder()
                 .id(dataId)
-                .value(dataValue)
+                .data(dataValue)
                 .build()))).thenReturn(DataResponse.builder()
                 .id(dataId)
-                .value(dataValue)
+                .data(dataValue)
                 .build());
 
         // perform
@@ -58,7 +58,7 @@ class DataControllerMockTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(DataRequest.builder()
                                 .id(dataId)
-                                .value(dataValue)
+                                .data(dataValue)
                                 .build())))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
@@ -68,7 +68,7 @@ class DataControllerMockTest {
         DataResponse response = objectMapper.readValue(body, DataResponse.class);
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(response.getId()).isEqualTo(dataId);
-            softly.assertThat(response.getValue()).isEqualTo(dataValue);
+            softly.assertThat(response.getData()).isEqualTo(dataValue);
         });
     }
 
@@ -79,7 +79,7 @@ class DataControllerMockTest {
         String dataValue = "test-value";
         when(dataService.find(dataId)).thenReturn(Optional.of(DataResponse.builder()
                 .id(dataId)
-                .value(dataValue)
+                .data(dataValue)
                 .build()));
 
         // perform
@@ -92,7 +92,7 @@ class DataControllerMockTest {
         DataResponse response = objectMapper.readValue(body, DataResponse.class);
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(response.getId()).isEqualTo(dataId);
-            softly.assertThat(response.getValue()).isEqualTo(dataValue);
+            softly.assertThat(response.getData()).isEqualTo(dataValue);
         });
     }
 
@@ -103,7 +103,7 @@ class DataControllerMockTest {
         String dataValue = "test-value";
         when(dataService.findAll()).thenReturn(List.of(DataResponse.builder()
                 .id(dataId)
-                .value(dataValue)
+                .data(dataValue)
                 .build()));
 
         // perform
@@ -118,7 +118,7 @@ class DataControllerMockTest {
         SoftAssertions.assertSoftly(softly -> {
             softly.assertThat(responses).hasSize(1);
             softly.assertThat(responses.get(0).getId()).isEqualTo(dataId);
-            softly.assertThat(responses.get(0).getValue()).isEqualTo(dataValue);
+            softly.assertThat(responses.get(0).getData()).isEqualTo(dataValue);
         });
     }
 

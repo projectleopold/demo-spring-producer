@@ -27,12 +27,12 @@ class DataServiceImplTest {
     void should_insert(@Autowired DataService service) {
         DataRequest request = DataRequest.builder()
                 .id("new-id")
-                .value("new-value")
+                .data("new-value")
                 .build();
         DataResponse response = service.insert(request);
         assertEquals(DataResponse.builder()
                 .id("new-id")
-                .value("new-value")
+                .data("new-value")
                 .build(), response);
     }
 
@@ -41,13 +41,13 @@ class DataServiceImplTest {
         String dataId = "id";
         DataRequest request = DataRequest.builder()
                 .id(dataId)
-                .value("value")
+                .data("value")
                 .build();
         service.insert(request);
         DataResponse response = service.find(dataId).orElseThrow();
         assertEquals(DataResponse.builder()
                 .id("id")
-                .value("value")
+                .data("value")
                 .build(), response);
     }
 
@@ -55,23 +55,23 @@ class DataServiceImplTest {
     void should_findAll(@Autowired DataService service) {
         DataRequest request1 = DataRequest.builder()
                 .id("id1")
-                .value("value1")
+                .data("value1")
                 .build();
         service.insert(request1);
         DataRequest request2 = DataRequest.builder()
                 .id("id2")
-                .value("value2")
+                .data("value2")
                 .build();
         service.insert(request2);
         List<DataResponse> responses = service.findAll();
         assertEquals(Set.of(
                         DataResponse.builder()
                                 .id("id1")
-                                .value("value1")
+                                .data("value1")
                                 .build(),
                         DataResponse.builder()
                                 .id("id2")
-                                .value("value2")
+                                .data("value2")
                                 .build()),
                 new HashSet<>(responses));
     }
@@ -81,7 +81,7 @@ class DataServiceImplTest {
         String dataId = "id";
         DataRequest request = DataRequest.builder()
                 .id(dataId)
-                .value("value")
+                .data("value")
                 .build();
         service.insert(request);
         assertTrue(service.find(dataId).isPresent());

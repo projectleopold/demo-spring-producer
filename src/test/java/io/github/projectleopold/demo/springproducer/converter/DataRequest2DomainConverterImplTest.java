@@ -15,7 +15,7 @@ class DataRequest2DomainConverterImplTest {
     void should_convert(@Autowired DataRequest2DomainConverter converter) {
         DataDomain dto = converter.convert(DataRequest.builder()
                 .id("test-id")
-                .value("test-value")
+                .data("test-value")
                 .build());
         assertEquals(DataDomain.builder()
                 .id("test-id")

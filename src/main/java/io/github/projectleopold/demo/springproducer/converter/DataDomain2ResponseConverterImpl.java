@@ -13,7 +13,7 @@ public class DataDomain2ResponseConverterImpl implements DataDomain2ResponseConv
     public DataResponse convert(DataDomain source) {
         return DataResponse.builder()
                 .id(source.getId())
-                .value(source.getValue())
+                .data(source.getValue())
                 .build();
     }
 

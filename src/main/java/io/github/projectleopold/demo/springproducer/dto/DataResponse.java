@@ -8,6 +8,6 @@ import lombok.Data;
 public class DataResponse {
 
     private String id;
-    private String value;
+    private String data;
 
 }

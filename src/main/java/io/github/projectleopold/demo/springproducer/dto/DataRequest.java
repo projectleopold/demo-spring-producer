@@ -8,6 +8,6 @@ import lombok.Data;
 public class DataRequest {
 
     private String id;
-    private String value;
+    private String data;
 
 }

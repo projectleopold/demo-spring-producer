@@ -19,7 +19,7 @@ class DataDomain2ResponseConverterImplTest {
                 .build());
         assertEquals(DataResponse.builder()
                 .id("test-id")
-                .value("test-value")
+                .data("test-value")
                 .build(), dto);
     }
 

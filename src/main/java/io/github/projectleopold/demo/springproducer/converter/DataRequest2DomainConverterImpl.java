@@ -13,7 +13,7 @@ public class DataRequest2DomainConverterImpl implements DataRequest2DomainConver
     public DataDomain convert(DataRequest source) {
         return DataDomain.builder()
                 .id(source.getId())
-                .value(source.getValue())
+                .value(source.getData())
                 .build();
     }
 
