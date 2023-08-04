@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version "${springBootPluginVersion}"
     id 'io.spring.dependency-management' version "${springDepManPluginVersion}"
     id 'org.springframework.cloud.contract' version "${springCloudContractPluginVersion}"
+    id 'io.github.projectleopold.producer' version "${leopoldProducerPluginVersion}"
     id 'maven-publish'
 }
 

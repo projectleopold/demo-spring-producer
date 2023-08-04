@@ -1,1 +1,9 @@
+pluginManagement {
+    repositories {
+        // TODO: Only for local development
+        mavenLocal()
+        gradlePluginPortal()
+    }
+}
+
 rootProject.name = 'spring-producer'
