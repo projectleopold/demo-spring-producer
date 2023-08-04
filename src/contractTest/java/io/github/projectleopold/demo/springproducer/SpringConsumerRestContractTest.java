@@ -1,4 +1,4 @@
-package io.github.projectleopold.demo.springproducer.springconsumer;
+package io.github.projectleopold.demo.springproducer;
 
 import io.github.projectleopold.demo.springproducer.dto.DataRequest;
 import io.github.projectleopold.demo.springproducer.dto.DataResponse;

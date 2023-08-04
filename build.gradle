@@ -43,7 +43,7 @@ contracts {
     def pkg = 'io.github.projectleopold.demo.springproducer'
     basePackageForTests = pkg
     baseClassMappings {
-        baseClassMapping('spring-consumer.rest', "${pkg}.springconsumer.SpringConsumerRestContractTest")
+        baseClassMapping('spring-consumer.rest', "${pkg}.SpringConsumerRestContractTest")
     }
 }
 
